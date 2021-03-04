@@ -296,26 +296,26 @@ class European_Style_option:
         self.OYF = self.Option_Yield_Finder(Bond_function,T0,T1,frequency,dayCount,Original_Price,initial_Benchmark_yield,par,freq,Kappa, theta, xi,dt,Recall_date,coupon)
         self.Final_Price = self.Callable_European_Bond_Price(Bond_function,T0,T1,frequency,dayCount,Original_Price,initial_Benchmark_yield,par,freq,Kappa, theta, xi,dt,Recall_date)
         
- if __name__ == '__main__':
-  d0 = date.today()
-  d1 = date(2026,8,15)
-  delta = d1 - d0
-  coupon = 0.05
-  start = ql.Date().todaysDate()
-  maturity = start + ql.Period(delta.days, ql.Days)
-  frequency = ql.Semiannual
-  dayCount = ql.Thirty360()
-  price = 104
-  par = 100
-  T = round(delta.days/360,3)
-  freq = 2
-  Benchmark_yield = rfree.iloc[-1,0]
-  dt = 1/2
-  a = Bond_Evaluation(coupon,frequency,dayCount,price,Benchmark_yield,par,freq,d0,d1,Kappa,theta,xi,dt)
-  Price_Given_Yield,Price,Z_spread,Duration,Bond_Price_Change_for_1_percent_interest_rate_higher = a.Bond_Price_Given_Yield,a.Results[0],a.zspread,a.volatools[0],a.volatools[1]
-  print(Price_Given_Yield,Price,Z_spread,Duration,Bond_Price_Change_for_1_percent_interest_rate_higher)
-  Original_Price = price
-  Recall_date = 5 #Mid_long_term
-  ESO = European_Style_option(a,d0,d1,frequency,dayCount,Original_Price,Benchmark_yield,par,freq,Kappa,theta,xi,dt,Recall_date,coupon)
-  print(ESO.OAS,a.zspread,ESO.Final_Price)
+if __name__ == '__main__':
+    d0 = date.today()
+    d1 = date(2026,8,15)
+    delta = d1 - d0
+    coupon = 0.05
+    start = ql.Date().todaysDate()
+    maturity = start + ql.Period(delta.days, ql.Days)
+    frequency = ql.Semiannual
+    dayCount = ql.Thirty360()
+    price = 104
+    par = 100
+    T = round(delta.days/360,3)
+    freq = 2
+    Benchmark_yield = rfree.iloc[-1,0]
+    dt = 1/2
+    a = Bond_Evaluation(coupon,frequency,dayCount,price,Benchmark_yield,par,freq,d0,d1,Kappa,theta,xi,dt)
+    Price_Given_Yield,Price,Z_spread,Duration,Bond_Price_Change_for_1_percent_interest_rate_higher = a.Bond_Price_Given_Yield,a.Results[0],a.zspread,a.volatools[0],a.volatools[1]
+    print(Price_Given_Yield,Price,Z_spread,Duration,Bond_Price_Change_for_1_percent_interest_rate_higher)
+    Original_Price = price
+    Recall_date = 5 #Mid_long_term
+    ESO = European_Style_option(a,d0,d1,frequency,dayCount,Original_Price,Benchmark_yield,par,freq,Kappa,theta,xi,dt,Recall_date,coupon)
+    print(ESO.OAS,a.zspread,ESO.Final_Price)
         
