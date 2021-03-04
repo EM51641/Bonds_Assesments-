@@ -86,7 +86,7 @@ if __name__ == '__main__':
     Kappa,theta,xi = Initialize_parameters().kappa_sigma_theta_initial_estimators(dt,rfree)
     args = [dt,len(rfree),rfree]
     res = minimize(Initialize_parameters().LogL,[Kappa,theta,xi],args,method='SLSQP')
-    p=res.x
+    Kappa,theta,xi=res.x
     
 class Fisher_Black_Call:
 
